@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainRegister">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Register"
+        tools:ignore="HardCodedText"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/etNama"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="130dp"
+        android:ems="10"
+        android:hint="Masukan Nama Anda"
+        android:inputType="text"
+        android:minHeight="48dp"
+        android:textColorHint="#8D6E63"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:ignore="Autofill,HardCodedText" />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="Masukan Email Anda"
+        android:inputType="textEmailAddress"
+        android:minHeight="48dp"
+        android:textColorHint="#8D6E63"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etNama"
+        tools:ignore="Autofill,HardCodedText" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="Masukan Password Anda"
+        android:inputType="textPassword"
+        android:minHeight="48dp"
+        android:textColorHint="#8D6E63"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEmail"
+        tools:ignore="Autofill,HardCodedText" />
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="589dp"
+        android:layout_height="387dp"
+        android:layout_marginBottom="-150dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/loginbackgroundtop"
+        tools:ignore="ContentDescription,ImageContrastCheck" />
+
+    <Button
+        android:id="@+id/btnProcessReg"
+        android:layout_width="280dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="75dp"
+        android:text="Register"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPassword"
+        tools:ignore="HardcodedText,DuplicateSpeakableTextCheck" />
+</androidx.constraintlayout.widget.ConstraintLayout>
