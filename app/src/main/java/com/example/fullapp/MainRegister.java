@@ -3,11 +3,13 @@ package com.example.fullapp;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 import com.example.fullapp.API.RegisterAPI;
 import com.example.fullapp.API.ServerAPI;
@@ -29,6 +31,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class MainRegister extends AppCompatActivity {
     EditText etNama, etEmail, etPassword;
     Button btnProcessReg;
+    ImageButton back;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +40,17 @@ public class MainRegister extends AppCompatActivity {
         etNama= (EditText)findViewById(R.id.etNama);
         etPassword= (EditText)findViewById(R.id.etPassword);
         btnProcessReg = (Button) findViewById(R.id.btnProcessReg);
+
+        back = (ImageButton) findViewById(R.id.back);
+
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainRegister.this,MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         btnProcessReg.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,15 +101,19 @@ public class MainRegister extends AppCompatActivity {
 
                             msg.setMessage("Register berhasil")
                                     .setPositiveButton("Ok",null).create().show();
-                            etEmail.setText("");
-                            etNama.setText("");
-                            etPassword.setText("");
+                            Intent intent = new Intent(MainRegister.this,MainActivity.class);
+                            startActivity(intent);
+                            finish();
                         }
                         else{
                             AlertDialog.Builder msg = new AlertDialog.Builder(MainRegister.this);
 
                             msg.setMessage("Simpan Gagal").setNegativeButton("Retry",null)
                                     .create().show();
+                            etNama.setText("");
+                            etPassword.setText("");
+                            etEmail.setText("");
+                            etNama.setFocusable(true);
                         }
                     }else{
                         AlertDialog.Builder msg = new AlertDialog.Builder(MainRegister.this);
