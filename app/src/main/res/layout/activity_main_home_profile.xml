@@ -21,72 +21,83 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="-80dp"
+        android:src="@drawable/imguser"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView3"
         tools:ignore="ContentDescription" />
 
-    <TextView
-        android:id="@+id/tvNama"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4">
+
+        <TextView
+            android:id="@+id/tvNama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Name"
+            android:textAlignment="center"
+            android:textColor="#242760"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            tools:ignore="HardCodedText" />
+
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Email"
+            android:textAlignment="center"
+            android:textColor="#242760"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            tools:ignore="HardCodedText" />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textStyle="bold"
-        android:textSize="24sp"
-        android:textColor="#242760"
-        android:text="Name"
-        tools:ignore="HardCodedText"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
-    <TextView
-        android:id="@+id/tvEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:textStyle="bold"
-        android:textSize="18sp"
-        android:textAlignment="center"
-        android:textColor="#242760"
-        android:text="Email"
-        tools:ignore="HardCodedText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNama" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/arrow_back"
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_marginTop="24dp"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_marginStart="30dp"
+        android:layout_marginEnd="30dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmail">
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
-        <TextView
-            android:id="@+id/tvKota"
-            android:layout_width="wrap_content"
+        <ImageButton
+            android:id="@+id/btnEditProfile"
+            android:layout_width="20dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
             android:layout_marginEnd="10dp"
-            android:text="Kota"
-            android:textColor="#242760"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            tools:ignore="HardCodedText" />
+            android:layout_weight="1"
+            android:src="@android:drawable/ic_menu_edit"
+            tools:ignore="ContentDescription,SpeakableTextPresentCheck,ImageContrastCheck" />
 
-        <TextView
-            android:id="@+id/tvProvinsi"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageButton
+            android:id="@+id/btnProduct"
+            android:layout_width="20dp"
+            android:layout_height="match_parent"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="8dp"
-            android:text="Provinsi"
-            android:textColor="#242760"
-            android:textSize="14sp"
-            android:textStyle="bold"
-            tools:ignore="HardCodedText" />
+            android:layout_weight="1"
+            android:src="@android:drawable/ic_popup_reminder"
+            tools:ignore="ContentDescription,SpeakableTextPresentCheck,ImageContrastCheck" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

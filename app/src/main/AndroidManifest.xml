@@ -16,6 +16,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".MainEditProfile"
+            android:exported="false" />
+        <activity
             android:name=".MainHomeProfile"
             android:exported="false" />
         <activity

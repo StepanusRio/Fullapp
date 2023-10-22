@@ -3,12 +3,14 @@ package com.example.fullapp;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.fullapp.API.LoginAPI;
 import com.example.fullapp.API.ServerAPI;
@@ -28,6 +30,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
+    ProgressDialog pd;
     EditText etEmail,etPassword;
     Button btnRegister,btnLogin;
     @Override
@@ -43,6 +46,12 @@ public class MainActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                pd = new ProgressDialog(view.getContext());
+                pd.setTitle("Proses Login. . .");
+                pd.setMessage("Tunggu sebentar");
+                pd.setCancelable(true);
+                pd.setIndeterminate(true);
+                pd.show();
                 processLogin(etEmail.getText().toString(),etPassword.getText().toString());
             }
         });
@@ -77,13 +86,16 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     JSONObject json = new JSONObject(response.body().string());
                     if (json.getString("status").equals("1")) {
+                        Toast.makeText(MainActivity.this, "Login Berhasil", Toast.LENGTH_SHORT).show();
                         AlertDialog.Builder msg = new AlertDialog.Builder(MainActivity.this);
-
                         msg.setMessage("Login berhasil")
                                 .setPositiveButton("Ok",null).create().show();
                         Intent intent = new Intent(MainActivity.this,MainHomeProfile.class);
+                        intent.putExtra("nama",json.getJSONObject("data").getString("nama"));
+                        intent.putExtra("email",json.getJSONObject("data").getString("email"));
                         startActivity(intent);
                         finish();
+                        pd.dismiss();
                     }
                     else {
                         AlertDialog.Builder msg = new AlertDialog.Builder(MainActivity.this);
@@ -92,6 +104,7 @@ public class MainActivity extends AppCompatActivity {
                         etEmail.setText("");
                         etPassword.setText("");
                     }
+                    pd.dismiss();
                 } catch (IOException | JSONException e) {
                     e.printStackTrace();
                 }
@@ -99,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.i("Info Login", "onFailure: Login Gagal"+t.toString());
+                pd.dismiss();
             }
         });
     }
